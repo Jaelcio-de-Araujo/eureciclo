@@ -44,11 +44,6 @@ return static function (RouteBuilder $routes) {
      */
     $routes->setRouteClass(DashedRoute::class);
 
-    /*  Rota de upload  */
-    $routes->scope('/', function (RouteBuilder $routes) {
-        $routes->connect('/upload', ['controller' => 'Your', 'action' => 'upload']);
-    });
-
     $routes->scope('/', function (RouteBuilder $builder) {
         /*
          * Here, we are connecting '/' (base path) to a controller called 'Pages',

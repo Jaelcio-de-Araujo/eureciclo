@@ -5,7 +5,7 @@
  */
 ?>
 <div class="dados index content">
-    <?= $this->Html->link(__('New Dado'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Inseir dado'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Dados') ?></h3>
     <div class="table-responsive">
         <table>
@@ -17,7 +17,7 @@
                     <th><?= $this->Paginator->sort('quantidade') ?></th>
                     <th><?= $this->Paginator->sort('endereco') ?></th>
                     <th><?= $this->Paginator->sort('fornecedor') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
+                    <th class="actions"><?= __('Ações') ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -25,14 +25,14 @@
                 <tr>
                     <td><?= $this->Number->format($dado->id) ?></td>
                     <td><?= h($dado->compradores) ?></td>
-                    <td><?= h($dado->preco_unitario) ?></td>
+                    <td><?='R$ '.h($dado->preco_unitario) ?></td>
                     <td><?= $this->Number->format($dado->quantidade) ?></td>
                     <td><?= h($dado->endereco) ?></td>
                     <td><?= h($dado->fornecedor) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $dado->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $dado->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $dado->id], ['confirm' => __('Are you sure you want to delete # {0}?', $dado->id)]) ?>
+                        <?= $this->Html->link(__('Visualizar'), ['action' => 'view', $dado->id]) ?>
+                        <?= $this->Html->link(__('Editar'), ['action' => 'edit', $dado->id]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $dado->id], ['confirm' => __('Tem certeza que deseja deletar # {0}?', $dado->id)]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -41,12 +41,12 @@
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->first('<< ' . __('primeiro')) ?>
+            <?= $this->Paginator->prev('< ' . __('anterior')) ?>
             <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->next(__('próximo') . ' >') ?>
+            <?= $this->Paginator->last(__('ultimo') . ' >>') ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+        <p><?= $this->Paginator->counter(__('Pagina {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} total')) ?></p>
     </div>
 </div>

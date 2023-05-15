@@ -7,13 +7,13 @@
 <div class="row">
     <aside class="column">
         <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+            <h4 class="heading"><?= __('Ações') ?></h4>
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $dado->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $dado->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Tem certeza que deseja deletar # {0}?', $dado->id), 'class' => 'side-nav-item']
             ) ?>
-            <?= $this->Html->link(__('List Dados'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+            <?= $this->Html->link(__('Listar Dados'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
     </aside>
     <div class="column-responsive column-80">
@@ -30,7 +30,7 @@
                     echo $this->Form->control('fornecedor');
                 ?>
             </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
+            <?= $this->Form->button(__('Atualizar')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>

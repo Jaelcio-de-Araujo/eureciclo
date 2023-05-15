@@ -50,11 +50,11 @@ class DadosController extends AppController
         if ($this->request->is('post')) {
             $dado = $this->Dados->patchEntity($dado, $this->request->getData());
             if ($this->Dados->save($dado)) {
-                $this->Flash->success(__('Dados Salvos com sucesso.'));
+                $this->Flash->success(__('Dados enviados com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('Os dados não foram salvos. Por favor, tente novamente.'));
+            $this->Flash->error(__('Os dados não foram  salvos, tente novamente.'));
         }
         $this->set(compact('dado'));
     }
@@ -74,11 +74,11 @@ class DadosController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $dado = $this->Dados->patchEntity($dado, $this->request->getData());
             if ($this->Dados->save($dado)) {
-                $this->Flash->success(__('Dados Salvos com sucesso.'));
+                $this->Flash->success(__('Dados enviados com sucesso.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('Os dados não foram salvos. Por favor, tente novamente.'));
+            $this->Flash->error(__('Os dados não foram  salvos, tente novamente.'));
         }
         $this->set(compact('dado'));
     }
@@ -95,12 +95,11 @@ class DadosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $dado = $this->Dados->get($id);
         if ($this->Dados->delete($dado)) {
-            $this->Flash->success(__('Dados deletadfos com sucesso.'));
+            $this->Flash->success(__('Dados deletados com sucesso.'));
         } else {
-            $this->Flash->error(__('Os dados não foram deletados. Por favor, tente novamente.'));
+            $this->Flash->error(__('Os dados não foram  deletados, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);
     }
-    
 }
