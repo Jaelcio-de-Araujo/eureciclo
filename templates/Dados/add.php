@@ -15,14 +15,9 @@
         <div class="dados form content">
             <?= $this->Form->create($dado) ?>
             <fieldset>
-                <legend><?= __('Add Dado') ?></legend>
+                <legend><?= __('Carregar arquivo') ?></legend>
                 <?php
-                    echo $this->Form->control('compradores');
-                    echo $this->Form->control('descricao');
-                    echo $this->Form->control('preco_unitario');
-                    echo $this->Form->control('quantidade');
-                    echo $this->Form->control('endereco');
-                    echo $this->Form->control('fornecedor');
+                    echo $this->Form->control('arquivo', ['type' => 'file']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
