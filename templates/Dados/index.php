@@ -5,7 +5,13 @@
  */
 ?>
 <div class="dados index content">
-    <?= $this->Html->link(__('Inseir dado'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+        <div style="display: inline-block;">
+            <?= $this->Html->link(__('Inserir dado'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+        </div>
+        <div style="display: inline-block; margin-left: 10px;">
+            <?= $this->Html->link(__('Carregar dado'), ['action' => 'upload'], ['class' => 'button float-right']) ?>
+        </div>
+    
     <h3><?= __('Dados') ?></h3>
     <div class="table-responsive">
         <table>

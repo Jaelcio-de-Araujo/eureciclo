@@ -1,8 +1,11 @@
 <?php
 declare(strict_types=1);
-
 namespace App\Controller;
-
+use Cake\Controller\Controller;
+use Cake\Http\Exception\NotFoundException;
+use Psr\Http\Message\ResponseInterface;
+use Laminas\Diactoros\UploadedFile;
+use Cake\Datasource\ConnectionManager;
 /**
  * Dados Controller
  *
@@ -102,4 +105,33 @@ class DadosController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    public function upload()
+    {
+        if ($this->request->is('post')) {
+            $file = $this->request->getData('Arquivo');
+            if ($file && $file->getClientMediaType() === 'text/plain') {
+                $contents = file_get_contents($file->getStream()->getMetadata('uri'));
+                $lines = explode("\n", $contents);
+                foreach ($lines as $line) {
+                    $data = explode("\t", $line);
+                    if (count($data) >= 5) {
+                        $entity = $this->Dados->newEmptyEntity();
+                        $entity->compradores = $data[0];
+                        $entity->descricao = $data[1];
+                        $entity->preco_unitario = isset($data[2]) ? intval($data[2]) : null;
+                        $entity->quantidade = isset($data[3]) ? intval($data[3]) : null;
+                        $entity->endereco = $data[4];
+                        $entity->fornecedor = isset($data[5]) && $data[5] !== '' ? $data[5] : 'N/A'; // Verifica se o valor é válido ou atribui um valor padrão
+                        $this->Dados->save($entity);
+                    }
+                }
+                $this->Flash->success(__('Arquivo processado e salvado com sucesso.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('Por favor, envie um arquivo .txt.'));
+            }
+        }
+    }
+    
 }
