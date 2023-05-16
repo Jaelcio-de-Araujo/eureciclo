@@ -1,0 +1,11 @@
+<phpunit>
+    <php>
+        <env name="APP_ENV" value="test"/>
+        <env name="DATABASE_URL" value="mysql://root:@localhost/romiseta"/>
+    </php>
+    <testsuites>
+        <testsuite name="App Test Suite">
+            <directory>./tests/TestCase/</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>

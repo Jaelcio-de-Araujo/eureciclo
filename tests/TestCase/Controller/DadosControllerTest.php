@@ -7,76 +7,29 @@ use App\Controller\DadosController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
-/**
- * App\Controller\DadosController Test Case
- *
- * @uses \App\Controller\DadosController
- */
+
 class DadosControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
-    /**
-     * Fixtures
-     *
-     * @var array<string>
-     */
-    protected $fixtures = [
-        'app.Dados',
-    ];
-
-    /**
-     * Test index method
-     *
-     * @return void
-     * @uses \App\Controller\DadosController::index()
-     */
-    public function testIndex(): void
+    public function testUpload(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        $data = [
+            'Arquivo' => [
+                'name' => 'dados.txt',
+                'type' => 'text/plain',
+                'tmp_name' => 'teste.txt',
+                'error' => UPLOAD_ERR_OK,
+                'size' => 123,
+            ],
+        ];
+    
+        $this->post('/dados/upload', $data);
+    
+        $this->assertResponseSuccess();
+        $this->assertFlashMessage('Arquivo processado e salvado com sucesso.');
+        $this->assertRedirect(['action' => 'index']);
+        // Verifique outras condições necessárias de acordo com o comportamento esperado
     }
-
-    /**
-     * Test view method
-     *
-     * @return void
-     * @uses \App\Controller\DadosController::view()
-     */
-    public function testView(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test add method
-     *
-     * @return void
-     * @uses \App\Controller\DadosController::add()
-     */
-    public function testAdd(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test edit method
-     *
-     * @return void
-     * @uses \App\Controller\DadosController::edit()
-     */
-    public function testEdit(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test delete method
-     *
-     * @return void
-     * @uses \App\Controller\DadosController::delete()
-     */
-    public function testDelete(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
+    
 }
